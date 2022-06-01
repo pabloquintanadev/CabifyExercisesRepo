@@ -14,3 +14,4 @@ Server routes
 *(A) duplicate(s) key(s)*: should response with a 400 error (bad request) and a info message explaining that the request keys must be unique. Instead, it actually returns an 200 status.
 
 
+[a link](https://github.com/wablopilson/CabifyExercisesRepo/blob/pablo.quintana/exercise02/API%20testing/doc/APITesting.md)
