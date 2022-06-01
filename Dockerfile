@@ -2,11 +2,11 @@ FROM node:latest
 
 EXPOSE 9001
 
-COPY ./exercise1/package*.json ./
+COPY ./message/package*.json ./
 
 RUN npm install
 
-COPY exercise1 ./
+COPY message ./
 
 RUN echo "hello world?"
 

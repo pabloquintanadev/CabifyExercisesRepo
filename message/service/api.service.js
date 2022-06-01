@@ -8,8 +8,8 @@ module.exports = class ApiService {
         })
     }
 
-    createMessage(destination, body) {
-        return this.axiosApp.post('/message', { destination, body })
+    createMessage(messageInfo) {
+        return this.axiosApp.post('/message', messageInfo)
     }
 
 }
