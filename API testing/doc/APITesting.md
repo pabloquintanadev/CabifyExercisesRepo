@@ -16,5 +16,5 @@ While testing our API, the following actions to test were discovered:
 1. Open your terminal
 2. Go to the API holding folder
 3. Connect to the Docker containers by running the command line *docker-compose up*
-4. Go to the /testing folder
+4. Go to the ``/API testing`` folder
 5. Run the command line *npm test*
