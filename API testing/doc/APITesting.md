@@ -4,11 +4,11 @@
 
 While testing our API, the following actions to test were discovered:
 
-*If a key is empty*: it should response with a 400 error (bad request) and a info message explaining that neither "destination" nor "message" should be empty. Instead, it actually returns an 200 status
+**If a key is empty**: it should response with a 400 error (bad request) and a info message explaining that neither "destination" nor "message" should be empty. Instead, it actually returns an 200 status
 
-*Send more keys in the JSON object than expected*: it should response with a 400 error (bad request) and a info message explaining that the request must only contain "destination" and "message". Instead, it actually returns an 200 status
+**Send more keys in the JSON object than expected**: it should response with a 400 error (bad request) and a info message explaining that the request must only contain "destination" and "message". Instead, it actually returns an 200 status
 
-*(A) duplicate(s) key(s)*: it should response with a 400 error (bad request) and a info message explaining that the request keys must be unique. Instead, it actually returns an 200 status.
+**(A) duplicate(s) key(s)**: it should response with a 400 error (bad request) and a info message explaining that the request keys must be unique. Instead, it actually returns an 200 status.
 
 
 ## How to test the API

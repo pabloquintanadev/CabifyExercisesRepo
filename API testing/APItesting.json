@@ -1,12 +1,13 @@
 {
 	"info": {
-		"_postman_id": "735cea1d-e0dd-4e72-91b8-d3197f6820a0",
-		"name": "Message app testing",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"_postman_id": "19dfbd13-7e44-4a4b-b301-8f96b2072b54",
+		"name": "messagesAppApiTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21263570"
 	},
 	"item": [
 		{
-			"name": "Test 01 (base)",
+			"name": "testing messageApp with destination empty-Expected response (400) Destination empty",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -18,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"destination\": \"PABLO\",\n  \"message\": \"testing testing\"\n}"
+					"raw": "{\n  \"destination\": \"\",\n  \"message\": \"This is the message\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:9001/api/messages",
@@ -36,7 +37,7 @@
 			"response": []
 		},
 		{
-			"name": "Test 02 (empty key(s))",
+			"name": "testing messageApp with message empty-Expected response (400) Message empty",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -48,7 +49,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"destination\": \"\",\n  \"message\": \"testing testing\"\n}"
+					"raw": "{\n  \"destination\": \"James\",\n  \"message\": \"\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:9001/api/messages",
@@ -66,7 +67,7 @@
 			"response": []
 		},
 		{
-			"name": "Test 02.1 (empty key(s))",
+			"name": "testing messageApp with extra keys-Expected response (400)-Too many parameters",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -78,7 +79,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"destination\": \"PABLO\",\n  \"message\": \"\"\n}"
+					"raw": "{\n  \"destination\": \"James\",\n  \"message\": \"This is the message\",\n  \"address\": \"street 1,2,3\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:9001/api/messages",
@@ -96,7 +97,7 @@
 			"response": []
 		},
 		{
-			"name": "Test 02.2 (empty key(s))",
+			"name": "testing messageApp with destination with only spaces-Expected response (400) Destination empty",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -108,7 +109,97 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"destination\": \"\",\n  \"message\": \"\"\n}"
+					"raw": "{\n  \"destination\": \"   \",\n  \"message\": \"This is the message\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9001/api/messages",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testing messageApp with message with only spaces-Expected response (400) Message empty",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"destination\": \"James\",\n  \"message\": \"   \"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9001/api/messages",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testing messageApp without message key-Expected response (400) missing message",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"destination\": \"James\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9001/api/messages",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testing messageApp without destination key-Expected response (400) missing destination",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"message\": \"This is the message\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:9001/api/messages",
