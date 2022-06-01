@@ -1,5 +1,5 @@
 const router = require("express").Router();
 
-router.use("/message", require('./message.routes'))
+router.use("/messages", require('./messages.routes'))
 
 module.exports = router;
