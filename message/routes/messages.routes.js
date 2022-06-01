@@ -14,7 +14,7 @@ router.post("/", (req, res, next) => {
     messageService
         .createMessage({ destination, body: message })
         .then(response => res.status(200).json(response.data))
-        .catch(err => res.status(500).json(err))
+        .catch(err => res.status(500).json({ message: "This action returns a 500 error" }))
 
 });
 
