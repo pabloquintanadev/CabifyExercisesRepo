@@ -15,9 +15,9 @@ router.post("/", (req, res, next) => {
 
 
     if (!req.body.destination) {
-        res.status(400).json({ message: 'Payload must contain destination key' })
+        res.status(400).json({ message: 'Destination field is required' })
     } else if (!req.body.message) {
-        res.status(400).json({ message: 'Payload must contain message key' })
+        res.status(400).json({ message: 'Message field is required' })
     } else if (checkIfEmpty(destination) && checkIfEmpty(message)) {
         res.status(400).json({ message: 'Destination and message fields are required' })
     } else if (destination && checkIfEmpty(destination)) {
