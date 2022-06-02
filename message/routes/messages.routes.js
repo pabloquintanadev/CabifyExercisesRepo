@@ -5,8 +5,23 @@ const checkIfEmpty = require("../utils/checkIfEmpty")
 const ApiService = require('../service/api.service')
 const messageService = new ApiService()
 
+const DBService = require('../service/db.service')
+const messageDBService = new DBService()
+
+const messageDB = require('./../models/Message.model')
+
 router.get("/", (req, res) => {
-    res.json("Hello world!")
+    messageDB
+        .find()
+        .then(data => res.json(data))
+        .catch(err => res.json(err))
+})
+
+router.delete("/", (req, res) => {
+    messageDB
+        .deleteMany()
+        .then(data => res.json(data))
+        .catch(err => res.json(err))
 })
 
 router.post("/", (req, res, next) => {
@@ -25,8 +40,13 @@ router.post("/", (req, res, next) => {
         } else {
             messageService
                 .createMessage({ destination, body: message })
-                .then(response => { res.status(200).json(response.data) })
-                .catch(err => res.status(500).json({ message: "This action returns a 500 error" }))
+                .then(() => {
+                    messageDBService
+                        .storeMessage({ destination, message })
+                        .then(response => res.status(200).json({ message: "Message succesfully stored in DB" }))
+                        .catch(err => res.status(500).json({ message: "Message could not be stored" }))
+                })
+                .catch(err => res.status(500).json({ message: "The request could not be sent" }))
         }
     } else if (!req.body.destination) {
         res.status(400).json({ message: 'Destination key is required' })
@@ -34,7 +54,7 @@ router.post("/", (req, res, next) => {
         res.status(400).json({ message: 'Message key is required' })
     }
 
-});
+})
 
 
 module.exports = router;
