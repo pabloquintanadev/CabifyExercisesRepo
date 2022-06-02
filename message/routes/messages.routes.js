@@ -17,13 +17,6 @@ router.get("/", (req, res) => {
         .catch(err => res.json(err))
 })
 
-router.delete("/", (req, res) => {
-    messageDB
-        .deleteMany()
-        .then(data => res.json(data))
-        .catch(err => res.json(err))
-})
-
 router.post("/", (req, res, next) => {
 
     const { destination, message } = req.body
@@ -43,18 +36,23 @@ router.post("/", (req, res, next) => {
                 .then(() => {
                     messageDBService
                         .storeMessage({ destination, message })
-                        .then(response => res.status(200).json({ message: "Message succesfully stored in DB" }))
-                        .catch(err => res.status(500).json({ message: "Message could not be stored" }))
+                        .then(_response => res.status(200).json({ message: "Message succesfully stored in DB" }))
+                        .catch(_err => res.status(500).json({ message: "Message could not be stored" }))
                 })
-                .catch(err => res.status(500).json({ message: "The request could not be sent" }))
+                .catch(_err => res.status(500).json({ message: "The request could not be sent" }))
         }
     } else if (!req.body.destination) {
         res.status(400).json({ message: 'Destination key is required' })
     } else if (!req.body.message) {
         res.status(400).json({ message: 'Message key is required' })
     }
-
 })
 
+router.delete("/", (req, res) => {
+    messageDB
+        .deleteMany()
+        .then(data => res.json(data))
+        .catch(err => res.json(err))
+})
 
 module.exports = router;
