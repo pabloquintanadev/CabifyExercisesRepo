@@ -24,4 +24,4 @@ While testing my API, the following actions to test were discovered:
 | ...the destination field is empty or it does not exist |  ...a 400 status and the message: "Message field is required"  | 
 | ...both the destination and messsage fields are empty or they do not exist  |  ...a 400 status and the message: "Destination and message fields are required"   |  
 | ...the request includes more keys than the two expected (message and destination) | ...a 400 status and the message: "Payload must not contain keys different to _destination_ and _message_"   | 
-
+| ...the request is correctly fulfilled | ...a 200 status |
