@@ -23,7 +23,7 @@ You can test the API running a command line and executing a Postman collection. 
 
 All the messages are being stored in an external database.
 
-## DB message model
+### DB message model
 
 - ``destination: String``
 - ``message: String``
