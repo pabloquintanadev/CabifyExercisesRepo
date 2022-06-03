@@ -1,4 +1,6 @@
-const checkIfEmpty = (str) => {
+const checkIfEmpty = (input) => {
+
+    const str = input + ''
 
     if (str === '') return true
 

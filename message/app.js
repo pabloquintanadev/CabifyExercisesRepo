@@ -1,7 +1,8 @@
 require("dotenv/config");
 
-const express = require("express");
+require("./db");
 
+const express = require("express");
 const app = express();
 
 require("./config")(app);
@@ -11,4 +12,4 @@ app.use("/api", allRoutes);
 
 require("./error-handling")(app);
 
-module.exports = app;
+module.exports = app
