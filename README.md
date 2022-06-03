@@ -21,21 +21,4 @@ You can test the API running a command line and executing a Postman collection. 
 
 ## DB
 
-All the messages are being stored in an external database.
-
-### DB message model
-
-- ``destination: String``
-- ``message: String``
-- ``number: Number``
-- ``status: String``
-    - ``enum: [PENDANT, SENT, CONFIRMED]``
-
-### Testing the db
-
-| If the messageapp responses with...      | then the message... |
-| ------------- | ------------- | 
-| ...a 200 status code|  ...is stored with CONFIRMED status (sent and confirmed) |  
-| ...a 500 status code |  ...is stored with PENDANT status (not sent, not confirmed)  | 
-| ...a 504 status code (server timeout)  |  ...is stored with SENT statuss (sent but not confirmed)   | 
-
+All the messages are being stored in an external database. You can read futher information in the [Message DB documentation](https://github.com/wablopilson/CabifyExercisesRepo/blob/pablo.quintana/exercise03/message/doc/DBdoc.md)
