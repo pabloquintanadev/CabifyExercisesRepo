@@ -10,7 +10,7 @@ All the messages are being stored in an external database.
 - ``status: String``
     - ``enum: [PENDANT, SENT, CONFIRMED]``
 
-## Testing the db
+## Testing the db-service connection
 
 | If the messageapp responses with...      | then the message... |
 | ------------- | ------------- | 
