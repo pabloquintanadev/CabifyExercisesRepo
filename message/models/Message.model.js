@@ -2,14 +2,13 @@ const mongoose = require("mongoose")
 const { Schema, model } = mongoose
 
 const messageSchema = new Schema({
-    destination: {
-        type: String
-    },
-    message: {
-        type: String
-    },
-    number: {
-        type: Number
+    destination: String,
+    message: String,
+    number: Number,
+    status: {
+        type: String,
+        enum: ['PENDANT', 'SENT', 'CONFIRMED'],
+        default: 'PENDANT'
     }
 })
 
