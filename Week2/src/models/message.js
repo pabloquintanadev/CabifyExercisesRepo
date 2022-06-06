@@ -9,6 +9,7 @@ const messageSchema = new mongoose.Schema({
     type: String,
     enum: ["ERROR", "OK", "TIMEOUT"],
   },
+  cost: Number
 });
 
 export default database.model("Message", messageSchema);
