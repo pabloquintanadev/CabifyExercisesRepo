@@ -1,6 +1,6 @@
 import http from "http";
 
-import saveBudget from "../clients/saveBudget.js";
+import updateBudget from "../clients/updateBudget.js";
 
 export default async (req, res) => {
     const body = JSON.stringify(req.body);
@@ -23,7 +23,7 @@ export default async (req, res) => {
     postReq.on("response", async (postRes) => {
 
         try {
-            await saveBudget(req.body);
+            await updateBudget(req.body);
 
             res.statusCode = 200;
             res.end(postRes.body);
@@ -39,7 +39,7 @@ export default async (req, res) => {
         postReq.abort();
 
         try {
-            await saveBudget(req.body);
+            await updateBudget(req.body);
 
         } finally {
             res.statusCode = 500;
