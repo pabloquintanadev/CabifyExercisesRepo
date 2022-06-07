@@ -1,6 +1,8 @@
 import http from "http";
 
 import saveMessage from "../clients/saveMessage.js";
+import updateBudget from "./updateBudget.js";
+import budgetCheck from "../clients/budgetCheck.js";
 
 export default async (req, res) => {
   const body = JSON.stringify(req.body);
@@ -22,6 +24,7 @@ export default async (req, res) => {
 
   postReq.on("response", async (postRes) => {
     try {
+      await updateBudget({ amount: -5 })
       await saveMessage({
         ...req.body,
         status: postRes.statusCode === 200 ? "OK" : "ERROR",
@@ -59,6 +62,16 @@ export default async (req, res) => {
     res.statusCode = 500;
     res.end(error.message);
   });
+
+  if (await budgetCheck()) {
+    postReq.write(body);
+    postReq.end();
+  }
+  else {
+    res.statusCode = 500
+    res.end("Your budget has not enough amount")
+
+  }
 
   postReq.write(body);
   postReq.end();
