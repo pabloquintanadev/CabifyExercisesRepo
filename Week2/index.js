@@ -6,6 +6,7 @@ import getMessages from "./src/controllers/getMessages.js";
 import sendMessage from "./src/controllers/sendMessage.js";
 import getBudgets from "./src/controllers/getBudgets.js";
 import updateBudget from "./src/controllers/updateBudget.js"
+import deleteMessages from "./src/controllers/deleteMessages.js";
 
 const app = express();
 
@@ -42,6 +43,8 @@ app.post(
 );
 
 app.get("/messages", getMessages);
+
+app.delete("/messages", deleteMessages);
 
 app.post(
   "/credit",

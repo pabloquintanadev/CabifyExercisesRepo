@@ -6,7 +6,7 @@ export default async (req, res) => {
     const body = JSON.stringify(req.body);
 
     const postOptions = {
-        host: "127.0.0.1",
+        host: "localhost",
         // host: "mongo",
         port: 3000,
         path: "/credit",

@@ -1,14 +1,14 @@
 import http from "http";
 
 import saveMessage from "../clients/saveMessage.js";
-import updateBudget from "./updateBudget.js";
+import updateBudget from "./../clients/updateBudget.js";
 import budgetCheck from "../clients/budgetCheck.js";
 
 export default async (req, res) => {
   const body = JSON.stringify(req.body);
 
   const postOptions = {
-    host: "127.0.0.1",
+    host: "localhost",
     // host: "messageapp",
     port: 3000,
     path: "/message",
