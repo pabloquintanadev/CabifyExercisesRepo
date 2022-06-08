@@ -32,3 +32,5 @@ services:
     command:
       - '--logpath'
       - '/var/log/mongodb/mongod2.log'
+  redis:
+    image: redis
