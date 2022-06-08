@@ -4,6 +4,12 @@ services:
   #    build: .
   #    ports:
   #      - "9003:9003"
+  # links:
+  #      - mongodb
+  #      - mongodb2
+  # depends_on:
+  #        - mongodb
+  #        - mongodb2
   messageapp:
     image: cabify/backend-bootcamp-messageapp
     ports:

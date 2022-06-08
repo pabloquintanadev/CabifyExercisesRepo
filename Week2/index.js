@@ -7,6 +7,9 @@ import sendMessage from "./src/controllers/sendMessage.js";
 import getBudgets from "./src/controllers/getBudgets.js";
 import updateBudget from "./src/controllers/updateBudget.js"
 import deleteMessages from "./src/controllers/deleteMessages.js";
+import getMessageStatus from "./src/controllers/getMessageStatus.js";
+
+import { Message } from "./src/models/message.js";
 
 const app = express();
 
@@ -43,6 +46,8 @@ app.post(
 );
 
 app.get("/messages", getMessages);
+
+app.get("/message/:messageId/status", getMessageStatus);
 
 app.delete("/messages", deleteMessages);
 
