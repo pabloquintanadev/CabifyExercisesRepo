@@ -1,5 +1,5 @@
 #Adding a message
-time curl --location --request POST 'http://localhost:9007/message' \
+time curl --location --request POST 'http://localhost:48151/message' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "body": "this is a body",
@@ -8,24 +8,24 @@ time curl --location --request POST 'http://localhost:9007/message' \
 
 echo "\n POST made new record added \n"
 
-# Getting a list of messages port 9007
-time curl --location --request GET 'http://localhost:9007/messages' \
+# Getting a list of messages port 80
+time curl --location --request GET 'http://localhost:48151/messages' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "destination": "STRING",
   "body": "STRING"
 }'
 
-# Getting a list of messages port 9008
-time curl --location --request GET 'http://localhost:9008/messages' \
+# Getting a list of messages port 80
+time curl --location --request GET 'http://localhost:48151/messages' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "destination": "STRING",
   "body": "STRING"
 }'
 
-# Getting a list of messages port 9009
-time curl --location --request GET 'http://localhost:9009/messages' \
+# Getting a list of messages port 80
+time curl --location --request GET 'http://localhost:48151/messages' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "destination": "STRING",
@@ -33,8 +33,8 @@ time curl --location --request GET 'http://localhost:9009/messages' \
 }'
 
 
-# Getting a list of messages
-time curl --location --request POST 'http://localhost:9017/credit' \
+# Creating a new message
+time curl --location --request POST 'http://localhost:48151/credit' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "amount": 3
