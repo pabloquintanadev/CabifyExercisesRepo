@@ -1,14 +1,19 @@
-import express from "express";
+const client = require('prom-client')
+const express = require("express");
+const logger = require("loglevel");
+logger.setLevel("info")
 
-import bodyParser from "body-parser";
-import {
+const metricExporter = require('./metrics.js')
+
+const bodyParser = require("body-parser");
+const {
   Validator,
   ValidationError
-} from "express-json-validator-middleware";
+} = require("express-json-validator-middleware");
 
-import sendMessage from "./src/controllers/sendMessage.js";
-import getMessages from "./src/controllers/getMessages.js";
-import getMessageStatus from "./src/controllers/getMessageStatus.js";
+const sendMessage = require("./src/controllers/sendMessage");
+const getMessages = require("./src/controllers/getMessages");
+const getMessageStatus = require("./src/controllers/getMessageStatus");
 
 const app = express();
 
@@ -45,10 +50,14 @@ app.post(
 
 app.get("/messages", getMessages);
 
-app.get("/message/:messageId/status", getMessageStatus);
+app.get("/message/:messageId/status", getMessageStatus)
 
-app.use((err, req, res, next) => {
-  console.log(res.body);
+app.get("/metrics", async (req, res) => {
+  res.end(await client.register.metrics())
+})
+
+app.use(function(err, req, res, next) {
+  logger.info(res.body);
   if (err instanceof ValidationError) {
     res.sendStatus(400);
   } else {
@@ -56,6 +65,6 @@ app.use((err, req, res, next) => {
   }
 });
 
-app.listen(9007, () => {
-  console.log("App started on PORT 9007");
+app.listen(9010, function() {
+  logger.info("App started on PORT 9010");
 });
